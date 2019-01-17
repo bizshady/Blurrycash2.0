@@ -43,7 +43,7 @@
 #define CRYPTONOTE_MAX_TX_SIZE                          1000000000
 #define CRYPTONOTE_PUBLIC_ADDRESS_TEXTBLOB_VER          0
 #define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW            10
-#define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW_V6         20
+#define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW_V6         200
 #define CURRENT_TRANSACTION_VERSION                     1
 #define CURRENT_BLOCK_MAJOR_VERSION                     1
 #define CURRENT_BLOCK_MINOR_VERSION                     1
@@ -58,15 +58,15 @@
 #define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V6           60*5
 
 // MONEY_SUPPLY - total number coins to be generated
-#define MONEY_SUPPLY                                    ((uint64_t)(-1))
-#define EMISSION_SPEED_FACTOR_PER_MINUTE                (18)
+#define MONEY_SUPPLY                                    ((uint64_t)(350000000000000000)
+#define EMISSION_SPEED_FACTOR_PER_MINUTE                (20)
 #define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)300000000000) // 3 * pow(10, 11)
 
 #define CRYPTONOTE_REWARD_BLOCKS_WINDOW                 100
 #define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1    300000
 #define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2    CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1
 #define CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE          600
-#define CRYPTONOTE_DISPLAY_DECIMAL_POINT                12
+#define CRYPTONOTE_DISPLAY_DECIMAL_POINT                8
 // COIN - number of smallest units in one coin
 #define COIN                                            ((uint64_t)1000000000000) // pow(10, 12)
 
@@ -159,20 +159,19 @@ namespace config
   uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3800;
   uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x7081;
   uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x1080;
-  uint16_t const P2P_DEFAULT_PORT = 17565;
-  uint16_t const RPC_DEFAULT_PORT = 17566;
-  uint16_t const ZMQ_RPC_DEFAULT_PORT = 17567;
+  uint16_t const P2P_DEFAULT_PORT = 14895;
+  uint16_t const RPC_DEFAULT_PORT = 14896;
+  uint16_t const ZMQ_RPC_DEFAULT_PORT = 14567;
   boost::uuids::uuid const NETWORK_ID = { {
-      0x12 ,0x30, 0xF1, 0x71 , 0x61, 0x04 , 0x41, 0x61, 0x17, 0x31, 0x00, 0x82, 0x16, 0xA1, 0xA1, 0x12
+      0x12 ,0x30, 0xF1, 0x71 , 0x61, 0x04 , 0x41, 0x61, 0x17, 0x31, 0x00, 0xA1, 0x12, 0x82, 0x16, 0xA1
     } }; // Bender's nightmare
-  std::string const GENESIS_TX = "010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101abf318a3dc8d66a0263839cffce83daa85963a27635a608a2ba9973055bcc8e400";
+  std::string const GENESIS_TX = "01C801ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121010f2bfd665fc20140bf11b2743999933304c85228f0ad98255b11dcb992e8138300";
 
   uint32_t const GENESIS_NONCE = 10000;
 
   std::set<std::string> const seed_nodes = {
-      "206.81.2.15:17565",
-      "206.81.2.16:17565",
-      "206.81.12.28:17565"};
+      "51.75.88.54:14895",
+      "51.75.92.73:14895"};
 
   namespace testnet
   {
@@ -183,7 +182,7 @@ namespace config
     uint16_t const RPC_DEFAULT_PORT = 18566;
     uint16_t const ZMQ_RPC_DEFAULT_PORT = 18567;
     boost::uuids::uuid const NETWORK_ID = { {
-        0x13 ,0x22, 0xF0, 0x55 , 0x42, 0x18 , 0x40, 0x33, 0x16, 0x88, 0x01, 0x92, 0xAA, 0xBC, 0xFF, 0x13
+        0x13 ,0x22, 0xF0, 0x55 , 0x42, 0x18 , 0x40, 0x33, 0x16, 0x88, 0x01, 0xBC, 0xFF, 0x13, 0x92, 0xAA
       } }; // Bender's daydream
 
     std::set<std::string> const seed_nodes = {
@@ -201,7 +200,7 @@ namespace config
     uint16_t const RPC_DEFAULT_PORT = 19566;
     uint16_t const ZMQ_RPC_DEFAULT_PORT = 19567;
     boost::uuids::uuid const NETWORK_ID = { {
-        0x14 ,0x31, 0xF1, 0x22 , 0x54, 0x86 , 0x36, 0xFF, 0xAB, 0x51, 0x00, 0x4F, 0x3C, 0x3D, 0xAA, 0x16
+        0x14 ,0x31, 0xF1, 0x22 , 0x54, 0x86 , 0x36, 0xFF, 0xAB, 0x51, 0x00, 0x3D, 0xAA, 0x16, 0x4F, 0x3C
       } }; // Bender's daydream
   }
 }
