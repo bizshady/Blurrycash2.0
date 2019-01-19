@@ -60,7 +60,7 @@
 #define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V6           60*5
 
 // MONEY_SUPPLY - total number coins to be generated
-#define MONEY_SUPPLY                                    ((uint64_t)(-1))
+#define MONEY_SUPPLY                                    ((uint64_t)(21000000000000000))
 #define EMISSION_SPEED_FACTOR_PER_MINUTE                (18)
 #define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)300000000000) // 3 * pow(10, 11)
 
@@ -68,9 +68,9 @@
 #define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1    300000
 #define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2    CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1
 #define CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE          600
-#define CRYPTONOTE_DISPLAY_DECIMAL_POINT                12
+#define CRYPTONOTE_DISPLAY_DECIMAL_POINT                9
 // COIN - number of smallest units in one coin
-#define COIN                                            ((uint64_t)1000000000000) // pow(10, 12)
+#define COIN                                            ((uint64_t)1000000000000) //pow(10, 12)
 
 #define DEFAULT_MIXIN                                   4
 #define DEFAULT_RINGSIZE                                DEFAULT_MIXIN + 1
@@ -141,11 +141,11 @@
 
 #define ALLOW_DEBUG_COMMANDS
 
-#define CRYPTONOTE_NAME                         "nerva"
+#define CRYPTONOTE_NAME                         "blurx"
 #define CRYPTONOTE_POOLDATA_FILENAME            "poolstate.bin"
 #define CRYPTONOTE_BLOCKCHAINDATA_FILENAME      "data.mdb"
 #define CRYPTONOTE_BLOCKCHAINDATA_LOCK_FILENAME "lock.mdb"
-#define P2P_NET_DATA_FILENAME                   "p2pstate.nerva.bin"
+#define P2P_NET_DATA_FILENAME                   "p2pstate.blurx.bin"
 #define MINER_CONFIG_FILE_NAME                  "miner_conf.json"
 
 #define THREAD_STACK_SIZE                       5 * 1024 * 1024
@@ -162,34 +162,33 @@ namespace config
   uint64_t const DEFAULT_DUST_THRESHOLD = 0; // deprecated
   std::string const P2P_REMOTE_DEBUG_TRUSTED_PUB_KEY = "0000000000000000000000000000000000000000000000000000000000000000";
 
-  uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3800;
-  uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x7081;
-  uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x1080;
-  uint16_t const P2P_DEFAULT_PORT = 17565;
-  uint16_t const RPC_DEFAULT_PORT = 17566;
+  uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3234;//XB
+  uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x2f4e; //bX
+  uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x7bb6; //Xb
+  uint16_t const P2P_DEFAULT_PORT = 14565;
+  uint16_t const RPC_DEFAULT_PORT = 14566;
   uint16_t const ZMQ_RPC_DEFAULT_PORT = 17567;
   boost::uuids::uuid const NETWORK_ID = { {
-      0x12, 0x30, 0xF1, 0x71 , 0x61, 0x04 , 0x41, 0x61, 0x17, 0x31, 0x00, 0x82, 0x16, 0xA1, 0xA1, 0x12
-    } }; // Bender's nightmare
+      0x12, 0x30, 0xF1, 0x71 , 0x61, 0x04 , 0x41, 0x61, 0x17, 0x31, 0x16, 0xA1, 0xA1, 0x12, 0x00, 0x82
+    } }; // 
   std::string const GENESIS_TX = "010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101abf318a3dc8d66a0263839cffce83daa85963a27635a608a2ba9973055bcc8e400";
 
   uint32_t const GENESIS_NONCE = 10000;
 
   std::set<std::string> const seed_nodes = {
-      "206.81.2.15:17565",
-      "206.81.2.16:17565",
-      "206.81.12.28:17565"};
+      "51.75.88.54:17565",
+      "51.75.92.73:17565";
 
   namespace testnet
   {
-    uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3800;
-    uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x7081;
-    uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x1080;
+    uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3234;//XB
+    uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x2f4e; //bX
+    uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x7bb6; //Xb
     uint16_t const P2P_DEFAULT_PORT = 18565;
     uint16_t const RPC_DEFAULT_PORT = 18566;
     uint16_t const ZMQ_RPC_DEFAULT_PORT = 18567;
     boost::uuids::uuid const NETWORK_ID = { {
-        0x13, 0x22, 0xF0, 0x55 , 0x42, 0x18 , 0x40, 0x33, 0x16, 0x88, 0x01, 0x92, 0xAA, 0xBC, 0xFF, 0x13
+        0x13, 0x22, 0xF0, 0x55 , 0x42, 0x18 , 0x40, 0x33, 0x16, 0x88, 0x01, 0xAA, 0xBC, 0xFF, 0x13, 0x92
       } }; // Bender's daydream
 
     std::set<std::string> const seed_nodes = {
@@ -200,14 +199,14 @@ namespace config
 
   namespace stagenet
   {
-    uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3800;
-    uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x7081;
-    uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x1080;
+    uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3234;//XB
+    uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x2f4e; //bX
+    uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x7bb6; //Xb
     uint16_t const P2P_DEFAULT_PORT = 19565;
     uint16_t const RPC_DEFAULT_PORT = 19566;
     uint16_t const ZMQ_RPC_DEFAULT_PORT = 19567;
     boost::uuids::uuid const NETWORK_ID = { {
-        0x14, 0x31, 0xF1, 0x22 , 0x54, 0x86 , 0x36, 0xFF, 0xAB, 0x51, 0x00, 0x4F, 0x3C, 0x3D, 0xAA, 0x16
+        0x14, 0x31, 0xF1, 0x22 , 0x54, 0x86 , 0x36, 0xFF, 0xAB, 0x51, 0x00, 0x3C, 0x3D, 0xAA, 0x16, 0x4F
       } }; // Bender's daydream
   }
 }
