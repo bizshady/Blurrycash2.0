@@ -177,7 +177,7 @@ namespace config
 
   std::set<std::string> const seed_nodes = {
       "51.75.88.54:17565",
-      "51.75.92.73:17565";
+      "51.75.92.73:17565"};
 
   namespace testnet
   {
