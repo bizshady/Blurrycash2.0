@@ -32,6 +32,7 @@
 #include "common/util.h"
 #include "daemonizer/windows_service.h"
 #include "daemonizer/windows_service_runner.h"
+#include "cryptonote_core/cryptonote_core.h"
 
 #include <shlobj.h>
 #include <boost/filesystem/operations.hpp>
@@ -176,7 +177,7 @@ namespace daemonizer
     }
     else // interactive
     {
-      //LOG_PRINT_L0("NERVA '" << MONERO_RELEASE_NAME << "' (v" << MONERO_VERSION_FULL);
+      //LOG_PRINT_L0("Monero '" << MONERO_RELEASE_NAME << "' (v" << MONERO_VERSION_FULL);
       return executor.run_interactive(vm);
     }
 

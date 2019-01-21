@@ -229,6 +229,7 @@ namespace cryptonote
   //-----------------------------------------------------------------------------------
   void core::stop()
   {
+    m_miner.stop();
     m_blockchain_storage.cancel();
 
     tools::download_async_handle handle;
@@ -711,10 +712,11 @@ namespace cryptonote
     std::vector<result> results(tx_blobs.size());
 
     tvc.resize(tx_blobs.size());
+    tools::threadpool& tpool = tools::threadpool::getInstance();
     tools::threadpool::waiter waiter;
     std::vector<blobdata>::const_iterator it = tx_blobs.begin();
     for (size_t i = 0; i < tx_blobs.size(); i++, ++it) {
-      m_threadpool.submit(&waiter, [&, i, it] {
+      tpool.submit(&waiter, [&, i, it] {
         try
         {
           results[i].res = handle_incoming_tx_pre(*it, tvc[i], results[i].tx, results[i].hash, results[i].prefix_hash, keeped_by_block, relayed, do_not_relay);
@@ -726,7 +728,7 @@ namespace cryptonote
         }
       });
     }
-    waiter.wait();
+    waiter.wait(&tpool);
     it = tx_blobs.begin();
     for (size_t i = 0; i < tx_blobs.size(); i++, ++it) {
       if (!results[i].res)
@@ -741,7 +743,7 @@ namespace cryptonote
       }
       else
       {
-        m_threadpool.submit(&waiter, [&, i, it] {
+        tpool.submit(&waiter, [&, i, it] {
           try
           {
             results[i].res = handle_incoming_tx_post(*it, tvc[i], results[i].tx, results[i].hash, results[i].prefix_hash, keeped_by_block, relayed, do_not_relay);
@@ -754,7 +756,7 @@ namespace cryptonote
         });
       }
     }
-    waiter.wait();
+    waiter.wait(&tpool);
 
 
     bool ok = true;
@@ -911,11 +913,7 @@ namespace cryptonote
   //-----------------------------------------------------------------------------------------------
   size_t core::get_block_sync_size(uint64_t height) const
   {
-    //HF v7 (CN-Adaptive-v2) MUST be synced one block at a time.
-    //We therefore enforce it regardless of any defaults or user defined values
-    size_t default_value = block_sync_size == 0 ? BLOCKS_SYNCHRONIZING_DEFAULT_COUNT : block_sync_size;
-    uint64_t fork_height = get_blockchain_storage().get_hardfork()->get_earliest_ideal_height_for_version(7);
-    return (height + default_value + 1) > fork_height ? 1 : default_value;
+    return BLOCKS_SYNCHRONIZING_DEFAULT_COUNT;
   }
   //-----------------------------------------------------------------------------------------------
   bool core::are_key_images_spent_in_pool(const std::vector<crypto::key_image>& key_im, std::vector<bool> &spent) const

@@ -42,22 +42,17 @@
 #define CRYPTONOTE_MAX_BLOCK_SIZE                       500000000  // block header blob limit, never used!
 #define CRYPTONOTE_MAX_TX_SIZE                          1000000000
 #define CRYPTONOTE_PUBLIC_ADDRESS_TEXTBLOB_VER          0
-#define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW            10
-#define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW_V6         20
+#define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW            20
 #define CURRENT_TRANSACTION_VERSION                     1
 #define CURRENT_BLOCK_MAJOR_VERSION                     1
 #define CURRENT_BLOCK_MINOR_VERSION                     1
-#define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT              60*60*2
-#define CRYPTONOTE_DEFAULT_TX_SPENDABLE_AGE             10
+#define CRYPTONOTE_DEFAULT_TX_SPENDABLE_AGE             20
 
 #define BULLETPROOF_MAX_OUTPUTS                         16
+#define BULLETPROOF_FORK_HEIGHT                         2
 
-#define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW               60
-
-#define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V2           60*24
-#define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V2            12
-
-#define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V6           60*5
+#define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW            12
+#define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT           60*5
 
 // MONEY_SUPPLY - total number coins to be generated
 #define MONEY_SUPPLY                                    ((uint64_t)(21000000000000000))
@@ -78,25 +73,16 @@
 #define DYNAMIC_FEE_PER_KB_BASE_BLOCK_REWARD            ((uint64_t)10000000000000) // 10 * pow(10,12)
 
 #define DIFFICULTY_TARGET                               60  // seconds
-#define DIFFICULTY_WINDOW                               720 // blocks
-#define DIFFICULTY_LAG                                  15  // !!!
-#define DIFFICULTY_CUT                                  60  // timestamps to cut after sorting
-#define DIFFICULTY_BLOCKS_COUNT                         DIFFICULTY_WINDOW + DIFFICULTY_LAG
 
 #define UNCLE_DIFFICULTY_TARGET                         DIFFICULTY_TARGET/4
 #define UNCLE_REWARD_RATIO                              2
 #define NEPHEW_REWARD_RATIO                             20
+#define UNCLE_MINING_FORK_HEIGHT                       2
 
 #define DIFFICULTY_BLOCKS_ESTIMATE_TIMESPAN             DIFFICULTY_TARGET //just alias; used by tests
-#define DIFFICULTY_WINDOW_V2                            17
-#define DIFFICULTY_CUT_V2                               6
-#define DIFFICULTY_BLOCKS_COUNT_V2                      DIFFICULTY_WINDOW_V2 + DIFFICULTY_CUT_V2*2
-
-#define DIFFICULTY_WINDOW_V3                            60
-#define DIFFICULTY_BLOCKS_COUNT_V3                      DIFFICULTY_WINDOW_V3
-
-#define DIFFICULTY_WINDOW_V6                            60
-#define DIFFICULTY_BLOCKS_COUNT_V6                      DIFFICULTY_WINDOW_V6 + 1
+#define DIFFICULTY_WINDOW                            17
+#define DIFFICULTY_CUT                              6
+#define DIFFICULTY_BLOCKS_COUNT                     DIFFICULTY_WINDOW + DIFFICULTY_CUT*2
 
 #define CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS_V1   DIFFICULTY_TARGET * CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS
 #define CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS       1
