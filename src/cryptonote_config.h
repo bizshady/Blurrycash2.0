@@ -51,8 +51,8 @@
 #define BULLETPROOF_MAX_OUTPUTS                         16
 #define BULLETPROOF_FORK_HEIGHT                         2
 
-#define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW            12
-#define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT           60*5
+#define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW               12
+#define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT              60*5
 
 // MONEY_SUPPLY - total number coins to be generated
 #define MONEY_SUPPLY                                    ((uint64_t)(21000000000000000))
@@ -77,12 +77,12 @@
 #define UNCLE_DIFFICULTY_TARGET                         DIFFICULTY_TARGET/4
 #define UNCLE_REWARD_RATIO                              2
 #define NEPHEW_REWARD_RATIO                             20
-#define UNCLE_MINING_FORK_HEIGHT                       2
+#define UNCLE_MINING_FORK_HEIGHT                        2
 
 #define DIFFICULTY_BLOCKS_ESTIMATE_TIMESPAN             DIFFICULTY_TARGET //just alias; used by tests
-#define DIFFICULTY_WINDOW                            17
-#define DIFFICULTY_CUT                              6
-#define DIFFICULTY_BLOCKS_COUNT                     DIFFICULTY_WINDOW + DIFFICULTY_CUT*2
+#define DIFFICULTY_WINDOW                               17
+#define DIFFICULTY_CUT                                  6
+#define DIFFICULTY_BLOCKS_COUNT                         DIFFICULTY_WINDOW + DIFFICULTY_CUT*2
 
 #define CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS_V1   DIFFICULTY_TARGET * CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS
 #define CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS       1
@@ -127,11 +127,11 @@
 
 #define ALLOW_DEBUG_COMMANDS
 
-#define CRYPTONOTE_NAME                         "blurx"
+#define CRYPTONOTE_NAME                         "obfuscinium"
 #define CRYPTONOTE_POOLDATA_FILENAME            "poolstate.bin"
 #define CRYPTONOTE_BLOCKCHAINDATA_FILENAME      "data.mdb"
 #define CRYPTONOTE_BLOCKCHAINDATA_LOCK_FILENAME "lock.mdb"
-#define P2P_NET_DATA_FILENAME                   "p2pstate.blurx.bin"
+#define P2P_NET_DATA_FILENAME                   "p2pstate.obfs.bin"
 #define MINER_CONFIG_FILE_NAME                  "miner_conf.json"
 
 #define THREAD_STACK_SIZE                       5 * 1024 * 1024
@@ -175,7 +175,7 @@ namespace config
     uint16_t const ZMQ_RPC_DEFAULT_PORT = 18567;
     boost::uuids::uuid const NETWORK_ID = { {
         0x13, 0x22, 0xF0, 0x55 , 0x42, 0x18 , 0x40, 0x33, 0x16, 0x88, 0x01, 0xAA, 0xBC, 0xFF, 0x13, 0x92
-      } }; // Bender's daydream
+      } }; // 
 
     std::set<std::string> const seed_nodes = {
       "204.48.17.173:18565",
@@ -193,7 +193,7 @@ namespace config
     uint16_t const ZMQ_RPC_DEFAULT_PORT = 19567;
     boost::uuids::uuid const NETWORK_ID = { {
         0x14, 0x31, 0xF1, 0x22 , 0x54, 0x86 , 0x36, 0xFF, 0xAB, 0x51, 0x00, 0x3C, 0x3D, 0xAA, 0x16, 0x4F
-      } }; // Bender's daydream
+      } }; // 
   }
 }
 
